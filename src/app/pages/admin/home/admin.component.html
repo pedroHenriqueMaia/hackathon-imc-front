@@ -1,0 +1,16 @@
+<app-navbar [user]="user"></app-navbar>
+<div class="container-fluid">
+  <div class="btn-group mb-4">
+    <button type="button" (click)="listarTabelaProfissionais()" [ngClass]="botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">Profissionais</button>
+    <button type="button" (click)="listarTabelaAlunos()" [ngClass]="!botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">Alunos</button>
+  </div>
+
+  <div *ngIf="botaoSelecionado">
+    <app-table [colunas]="colunasProfissionais" [dataTable]="dataTableProfissionais"></app-table>
+    <a class="btn mr-5" href="administrador/cadastro">Cadastrar</a>
+  </div>
+  <div *ngIf="!botaoSelecionado">
+    <app-table [colunas]="colunasAlunos" [dataTable]="dataTableAlunos"></app-table>
+    <a class="btn mr-5" href="administrador/cadastro">Cadastrar</a>
+  </div>
+</div>

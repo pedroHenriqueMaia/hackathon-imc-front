@@ -1,9 +1,9 @@
 <nav class="navbar">
-  <a href="javascript: history.go(-1)" class="navbar-brand m-4">LOGO</a>
-  <div class="mr-auto">
-    <p *ngIf="user" class="m-4">Olá, {{ user }}</p>
+  <p *ngIf="user" class="mt-4 ml-4">Olá, {{ user }}</p>
+  <div>
+    <a id="logo" href="javascript: history.go(-1)"><img src="../../../assets/logo2.png"></a>
   </div>
-  <a class="mr-4" href="#">
+  <a class="mr-4" href="/login">
     Sair
   </a>
 </nav>

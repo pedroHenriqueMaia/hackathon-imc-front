@@ -10,6 +10,7 @@ import { AdminCadastroComponent } from './pages/admin/admin-cadastro/admin-cadas
 import { FormsModule } from '@angular/forms';
 import { ProfissionalComponent } from './pages/profissional/home/profissional.component';
 import { ProfissionalCadastroComponent } from './pages/profissional/profissional-cadastro/profissional-cadastro.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ProfissionalCadastroComponent } from './pages/profissional/profissional
     TableComponent,
     AdminCadastroComponent,
     ProfissionalComponent,
-    ProfissionalCadastroComponent
+    ProfissionalCadastroComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -20,5 +20,12 @@
       <td>{{ data.cpf }}</td>
       <td>{{ data.alunos }}</td>
     </tr>
+    <tr *ngIf="dataTable.type === 'IMC'">
+      <td scope="row">{{ data.aluno }}</td>
+      <td>{{ data.altura }}</td>
+      <td>{{ data.peso }}</td>
+      <td>{{ data.resultado }}</td>
+      <td>{{ data.data }}</td>
+    </tr>
   </tbody>
 </table>

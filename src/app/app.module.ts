@@ -8,6 +8,8 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { TableComponent } from './component/table/table.component';
 import { AdminCadastroComponent } from './pages/admin/admin-cadastro/admin-cadastro.component';
 import { FormsModule } from '@angular/forms';
+import { ProfissionalComponent } from './pages/profissional/home/profissional.component';
+import { ProfissionalCadastroComponent } from './pages/profissional/profissional-cadastro/profissional-cadastro.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { FormsModule } from '@angular/forms';
     AdminComponent,
     NavbarComponent,
     TableComponent,
-    AdminCadastroComponent
+    AdminCadastroComponent,
+    ProfissionalComponent,
+    ProfissionalCadastroComponent
   ],
   imports: [
     BrowserModule,

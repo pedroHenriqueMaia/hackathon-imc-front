@@ -29,6 +29,36 @@ data: [
 ]
 }
 
+export const MOCK_DATA_TABLE_IMC = {
+  type: 'IMC',
+  data: [
+      {
+        id:"fdlsakfodas-f0d23fdss032fds-fdsf2",
+        aluno:"Lucas Henrique",
+        altura:"1,84 m",
+        peso:"65 kg",
+        resultado:"45,5",
+        data:"07/11/2022",
+    },
+      {
+        id:"fdlsakfodas-f0d23fdss032fds-fdsf2",
+        aluno:"José Luiz",
+        altura:"1,77 m",
+        peso:"84 kg",
+        resultado:"123,4",
+        data:"11/08/2022",
+    },
+      {
+        id:"fdlsakfodas-f0d23fdss032fds-fdsf2",
+        aluno:"Amanda Thuz",
+        altura:"1,54 m",
+        peso:"60 kg",
+        resultado:"46,7",
+        data:"11/05/2022",
+    },
+  ]
+  }
+
 export const MOCK_DATA_TABLE_ALUNO = {
 type: 'ALUNO',
 data: [

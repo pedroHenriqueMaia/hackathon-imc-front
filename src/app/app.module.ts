@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ProfissionalComponent } from './pages/profissional/home/profissional.component';
 import { ProfissionalCadastroComponent } from './pages/profissional/profissional-cadastro/profissional-cadastro.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AdminGuard } from './guards/admin.guard';
+import { ProfessionalGuard } from './guards/professional.guard';
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { LoginComponent } from './pages/login/login.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AdminGuard, ProfessionalGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

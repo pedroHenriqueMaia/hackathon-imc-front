@@ -4,13 +4,13 @@
       <form class="form-group">
         <img src="../../../assets/logo1.png" align="center" class="mb-5" >
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email">
+          <input [(ngModel)]="cpf" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Email">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Senha">
+          <input [(ngModel)]="senha" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Senha">
         </div>
     
-        <button class="btn">Login</button>
+        <button (click)="fazerLogin()" class="btn">Login</button>
       </form>
     </div>
   </div>

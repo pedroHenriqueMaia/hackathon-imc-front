@@ -16,11 +16,11 @@ const routes: Routes = [
     component: AdminCadastroComponent
   },
   {
-    path: 'profissional',
+    path: 'professional',
     component: ProfissionalComponent
   },
   {
-    path: 'profissional/cadastro',
+    path: 'professional/cadastro',
     component: ProfissionalCadastroComponent
   },
   {

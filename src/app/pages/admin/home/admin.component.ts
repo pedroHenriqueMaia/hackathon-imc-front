@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MOCK_ADMIN, MOCK_DATA_TABLE_ALUNO, MOCK_DATA_TABLE_PROFISSIONAIS } from 'src/app/utils/mocks';
+import { IUsuario } from 'src/app/requests/models/usuario';
+import { UsersService } from 'src/app/requests/services/usuario.service';
+import { MOCK_ADMIN } from 'src/app/utils/mocks';
 
 @Component({
   selector: 'app-admin',
@@ -8,38 +10,57 @@ import { MOCK_ADMIN, MOCK_DATA_TABLE_ALUNO, MOCK_DATA_TABLE_PROFISSIONAIS } from
 })
 export class AdminComponent implements OnInit {
 
+  constructor(private usersService: UsersService) {}
+
  colunasProfissionais: string[] = [
+  'ID',
   'Nome',
   'CPF',
-  'Alunos'
  ]
 
  colunasAlunos: string[] = [
+  'ID',
   'Nome',
-  'CPF',
-  'IMCs'
+  'CPF'
  ]
 
   user!: string;
-  dataTableProfissionais:any;
-  dataTableAlunos:any;
+  dataTableProfissionais:IUsuario[] = [];
+  dataTableAlunos:IUsuario[] = [];
   botaoSelecionado: boolean = true
 
+  usuarioNaoFiltrados: IUsuario[] = [];
+  professionaisFiltrados: IUsuario[] = [];
+  alunosFiltrados: IUsuario[] = [];
+
   ngOnInit(): void {
+    this.usersService.executar().subscribe((res) => this.filtrarUsuarios(res.data));
+    this.listarTabelaProfissionais();
     this.user = MOCK_ADMIN.name;
-    this.dataTableAlunos = MOCK_DATA_TABLE_ALUNO;
-    this.dataTableProfissionais = MOCK_DATA_TABLE_PROFISSIONAIS;
+  }
+
+  filtrarUsuarios(usuarioNaoFiltrados:IUsuario[]) {
+    console.log(usuarioNaoFiltrados)
+    usuarioNaoFiltrados.map((i) => {
+      if(i.type == 'professional'){
+        this.professionaisFiltrados.push(i)
+      }
+
+      if(i.type == 'client'){
+        this.alunosFiltrados.push(i)
+      }
+    })
   }
   
   listarTabelaProfissionais():void {
     this.dataTableProfissionais = [];
-    this.dataTableProfissionais = MOCK_DATA_TABLE_PROFISSIONAIS;
+    this.dataTableProfissionais = this.professionaisFiltrados;
     this.botaoSelecionado = true;
   }
   
   listarTabelaAlunos():void {
     this.dataTableAlunos = [];
-    this.dataTableAlunos = MOCK_DATA_TABLE_ALUNO;
+    this.dataTableAlunos = this.alunosFiltrados;
     this.botaoSelecionado = false;
   }
 

@@ -4,23 +4,23 @@
       <th *ngFor="let coluna of colunas" scope="col">{{ coluna }}</th>
     </tr>
   </thead>
-  <tbody *ngFor="let data of dataTable.data">
-    <tr *ngIf="dataTable.type === 'ALUNO'">
-      <td scope="row">{{ data.nome }}</td>
+  <tbody *ngFor="let data of dataTable">
+    <tr *ngIf="data.type == 'client'">
+      <td scope="row">{{ data.id }}</td>
+      <td>{{ data.name }}</td>
       <td>{{ data.cpf }}</td>
+    </tr>
+    <tr *ngIf="data.type === 'professional'">
+      <td scope="row">{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.cpf }}</td>
+    </tr>
+    <tr *ngIf="data.type === 'admin'">
+    <td scope="row">{{ data.nome }}</td>
+    <td>{{ data.cpf }}</td>
       <td>{{ data.alunos }}</td>
     </tr>
-    <tr *ngIf="dataTable.type === 'PROFISSIONAL'">
-      <td scope="row">{{ data.nome }}</td>
-      <td>{{ data.cpf }}</td>
-      <td>{{ data.alunos }}</td>
-    </tr>
-    <tr *ngIf="dataTable.type === 'ADMIN'">
-      <td scope="row">{{ data.nome }}</td>
-      <td>{{ data.cpf }}</td>
-      <td>{{ data.alunos }}</td>
-    </tr>
-    <tr *ngIf="dataTable.type === 'IMC'">
+    <tr *ngIf="data.type === 'IMC'">
       <td scope="row">{{ data.aluno }}</td>
       <td>{{ data.altura }}</td>
       <td>{{ data.peso }}</td>

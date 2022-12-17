@@ -13,7 +13,6 @@ export class TableComponent implements OnInit {
   @Input() colunas!: string[];
 
   ngOnInit(): void {
-    console.log()
   }
 
 }

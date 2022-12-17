@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   cpf!: string;
   senha!: string;
+  mostrarMensagemErro: boolean = false
 
   ngOnInit(): void {
   }
@@ -32,7 +33,8 @@ export class LoginComponent implements OnInit {
       this.estadoDadosService.estadosDados.token = res.data.token
       this.decodificarJWT(res);
       this.redirecionarUsuario()
-    })
+    },
+    (err) => this.mostrarMensagemErro = true) 
   }
 
   decodificarJWT(res: IHttpResponse) {

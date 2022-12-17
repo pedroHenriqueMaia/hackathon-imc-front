@@ -24,7 +24,7 @@ export class AlunoComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.executarReqParaListarALunosDoAlunoLogado().subscribe((res) => {
       this.dataTable = res.data
-      this.dataTable.map((i) => i.type = 'client')
+      this.dataTable.map((i) => i.type = 'aluno')
       console.log('ss')
     })
   }
@@ -32,7 +32,7 @@ export class AlunoComponent implements OnInit {
   pesquisar() {
     this.usersService.executarReqParaListarALunosDoAlunoLogado(this.data1, this.data2).subscribe((res) => {
       this.dataTable = res.data
-      this.dataTable.map((i) => i.type = 'client')
+      this.dataTable.map((i) => i.type = 'aluno')
       console.log('ssaa')
     })
   }

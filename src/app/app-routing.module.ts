@@ -37,8 +37,8 @@ const routes: Routes = [
     canActivate: [AlunoGuard]
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: '',
+    component: LoginComponent,
   }
 ];
 

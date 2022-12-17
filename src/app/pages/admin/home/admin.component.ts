@@ -40,7 +40,6 @@ export class AdminComponent implements OnInit {
   }
 
   filtrarUsuarios(usuarioNaoFiltrados:IUsuario[]) {
-    console.log(usuarioNaoFiltrados)
     usuarioNaoFiltrados.map((i) => {
       if(i.type == 'professional'){
         this.professionaisFiltrados.push(i)

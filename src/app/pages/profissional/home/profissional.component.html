@@ -1,20 +1,27 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
   <div class="btn-group mb-4">
-    <!-- <button type="button" (click)="listarTabelaProfissionais()" [ngClass]="botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">Alunos</button> -->
-    <button type="button" [ngClass]="!botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">IMCs</button>
+    <button type="button" (click)="listarTabelaAlunos()" [ngClass]="botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">Alunos</button>
+    <button type="button" (click)="listarTabelaImc()" [ngClass]="!botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">IMCs</button>
   </div>
 
-  <!-- <div *ngIf="botaoSelecionado">
-    <app-table [colunas]="colunasAlunos" [dataTable]="dataTableAlunos"></app-table>
-  </div> -->
-  <div *ngIf="dataTableImc.length == 0">
-    <div class="alert alert-secondary" role="alert">
-      Nenhuma informação encontrada!
+  <div *ngIf="botaoSelecionado">
+    <div *ngIf="dataTableAlunos.length == 0">
+      <div class="alert alert-secondary" role="alert">
+        Nenhuma informação encontrada!
+      </div>
+    </div>
+    <div *ngIf="dataTableAlunos.length != 0">
+      <app-table [colunas]="colunasAlunos" [dataTable]="dataTableAlunos"></app-table>
     </div>
   </div>
-  <div *ngIf="dataTableImc.length != 0">
-    <div *ngIf="botaoSelecionado">
+  <div *ngIf="!botaoSelecionado">
+    <div *ngIf="dataTableImc.length == 0">
+      <div class="alert alert-secondary" role="alert">
+        Nenhuma informação encontrada!
+      </div>
+    </div>
+    <div *ngIf="dataTableImc.length != 0">
       <app-table [colunas]="colunasImc" [dataTable]="dataTableImc"></app-table>
       <a class="btn mr-5" href="professional/cadastro">Cadastrar</a>
     </div>

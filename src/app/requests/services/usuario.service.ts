@@ -71,9 +71,21 @@ export class UsersService {
     if(usuarioLogadoStr){
       usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
     }
-    console.log(this.httpOptions )
     return this.http.get<IHttpResponse>(
       `${ENDPOINTS.IMC}?profissionalId=${usuarioLogadoObj.user_id}`,
+      this.httpOptions
+    ) as Observable<IHttpResponse>;
+  }
+
+  executarReqParaListarALunosDoProfessionalLogado2() {
+    this.setarHttpOption()
+    let usuarioLogadoObj;
+    const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    if(usuarioLogadoStr){
+      usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
+    }
+    return this.http.get<IHttpResponse>(
+      `${ENDPOINTS.IMC_ALUNOS}${usuarioLogadoObj.user_id}`,
       this.httpOptions
     ) as Observable<IHttpResponse>;
   }
@@ -97,7 +109,6 @@ export class UsersService {
 
     executarReqParaCriarUmNovoIMC(entrada: IIMC) {
     this.setarHttpOption()
-    console.log(this.httpOptions )
     return this.http.post<IHttpResponse>(
       ENDPOINTS.IMC,
       entrada,

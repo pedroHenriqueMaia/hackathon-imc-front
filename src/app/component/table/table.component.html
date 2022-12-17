@@ -17,14 +17,19 @@
       <td>{{ data.name }}</td>
       <td>{{ data.cpf }}</td>
     </tr>
+    <tr *ngIf="data.type == 'client-professional'">
+      <td scope="row">{{ data.nome }}</td>
+      <td>{{ data.cpf }}</td>
+      <td>{{ data.qtd }}</td>
+    </tr>
     <tr *ngIf="data.type === 'professional'">
       <td scope="row">{{ data.id }}</td>
       <td>{{ data.name }}</td>
       <td>{{ data.cpf }}</td>
     </tr>
     <tr *ngIf="data.type === 'admin'">
-    <td scope="row">{{ data.nome }}</td>
-    <td>{{ data.cpf }}</td>
+      <td scope="row">{{ data.nome }}</td>
+      <td>{{ data.cpf }}</td>
       <td>{{ data.alunos }}</td>
     </tr>
     <tr *ngIf="data.type === 'imc'">

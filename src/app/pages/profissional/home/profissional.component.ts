@@ -23,31 +23,41 @@ export class ProfissionalComponent implements OnInit {
    colunasAlunos: string[] = [
     'Nome',
     'CPF',
-    'IMCs'
+    'Qtd. IMCs'
    ]
   
     user!: string;
     dataTableImc:IIMC[] = [];
-    dataTableAlunos:any;
+    dataTableAlunos:{nome:string, cpf: string, qtd:number, type: string}[] = [];
     botaoSelecionado: boolean = true
   
     ngOnInit(): void {
+      this.usersService.executarReqParaListarALunosDoProfessionalLogado2().subscribe((res) => {
+        this.dataTableAlunos = res.data
+        this.dataTableAlunos.map((i) => i.type = 'client-professional')
+      })
       this.usersService.executarReqParaListarALunosDoProfessionalLogado().subscribe((res) => {
         this.dataTableImc = res.data
         this.dataTableImc.map((i) => i.type = 'imc')
       })
     }
 
-  listarTabelaProfissionais():void {
-    // this.dataTableImc = [];
-    // this.dataTableImc = MOCK_DATA_TABLE_IMC;
-    this.botaoSelecionado = true;
+    listarTabelaImc():void {
+    this.dataTableImc = [];
+    this.usersService.executarReqParaListarALunosDoProfessionalLogado().subscribe((res) => {
+      this.dataTableImc = res.data
+      this.dataTableImc.map((i) => i.type = 'imc')
+    })
+    this.botaoSelecionado = false;
   }
   
   listarTabelaAlunos():void {
-    // this.dataTableAlunos = [];
-    // this.dataTableAlunos = MOCK_DATA_TABLE_ALUNO;
-    this.botaoSelecionado = false;
+    this.dataTableAlunos = [];
+    this.usersService.executarReqParaListarALunosDoProfessionalLogado2().subscribe((res) => {
+      this.dataTableAlunos = res.data
+      this.dataTableAlunos.map((i) => i.type = 'client-professional')
+    })
+    this.botaoSelecionado = true;
   }
 
 }

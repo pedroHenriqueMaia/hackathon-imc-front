@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IIMC, IIMC_PROFESSIONAL } from 'src/app/requests/models/imc';
 import { UsersService } from 'src/app/requests/services/usuario.service';
 import { MOCK_ADMIN, MOCK_DATA_TABLE_ALUNO, MOCK_DATA_TABLE_IMC } from 'src/app/utils/mocks';
+import { UtilsService } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-profissional',
@@ -34,7 +35,10 @@ export class ProfissionalComponent implements OnInit {
     ngOnInit(): void {
       this.usersService.executarReqParaListarALunosDoProfessionalLogado2().subscribe((res) => {
         this.dataTableAlunos = res.data
-        this.dataTableAlunos.map((i) => i.type = 'client-professional')
+        this.dataTableAlunos.map((i) => {
+          i.type = 'client-professional'
+          i.cpf = UtilsService.formatarCpf(i.cpf)
+        })
       })
       this.usersService.executarReqParaListarALunosDoProfessionalLogado().subscribe((res) => {
         this.dataTableImc = res.data
@@ -55,9 +59,13 @@ export class ProfissionalComponent implements OnInit {
     this.dataTableAlunos = [];
     this.usersService.executarReqParaListarALunosDoProfessionalLogado2().subscribe((res) => {
       this.dataTableAlunos = res.data
-      this.dataTableAlunos.map((i) => i.type = 'client-professional')
+      this.dataTableAlunos.map((i) => {
+        i.type = 'client-professional'
+        i.cpf = UtilsService.formatarCpf(i.cpf)
+      })
     })
     this.botaoSelecionado = true;
   }
+
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IUsuario } from 'src/app/requests/models/usuario';
 import { UsersService } from 'src/app/requests/services/usuario.service';
 import { MOCK_ADMIN } from 'src/app/utils/mocks';
+import { UtilsService } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-admin',
@@ -42,10 +43,12 @@ export class AdminComponent implements OnInit {
   filtrarUsuarios(usuarioNaoFiltrados:IUsuario[]) {
     usuarioNaoFiltrados.map((i) => {
       if(i.type == 'professional'){
+        i.cpf = UtilsService.formatarCpf(i.cpf);
         this.professionaisFiltrados.push(i)
       }
-
+      
       if(i.type == 'client'){
+        i.cpf = UtilsService.formatarCpf(i.cpf);
         this.alunosFiltrados.push(i)
       }
     })

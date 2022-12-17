@@ -25,7 +25,6 @@ export class AlunoComponent implements OnInit {
     this.usersService.executarReqParaListarALunosDoAlunoLogado().subscribe((res) => {
       this.dataTable = res.data
       this.dataTable.map((i) => i.type = 'aluno')
-      console.log('ss')
     })
   }
   
@@ -33,7 +32,6 @@ export class AlunoComponent implements OnInit {
     this.usersService.executarReqParaListarALunosDoAlunoLogado(this.data1, this.data2).subscribe((res) => {
       this.dataTable = res.data
       this.dataTable.map((i) => i.type = 'aluno')
-      console.log('ssaa')
     })
   }
 

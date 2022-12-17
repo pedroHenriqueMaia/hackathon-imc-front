@@ -16,6 +16,7 @@ export class ProfissionalCadastroComponent implements OnInit {
   altura!:number; 
   aluno!:number;
   senha!:string;
+  mensagemErro: boolean = false;
 
   constructor(private usersService: UsersService, private route: Router) {}
 
@@ -28,6 +29,7 @@ export class ProfissionalCadastroComponent implements OnInit {
           this.alunos.push(i);
         }
       })
+      this.aluno = this.alunos[0].id ? this.alunos[0].id : this.aluno 
     })
     this.user = MOCK_ADMIN.name;
   }
@@ -41,6 +43,9 @@ export class ProfissionalCadastroComponent implements OnInit {
     let resultado = this.peso / (this.altura * this.altura)
     this.usersService.executarReqParaCriarUmNovoIMC(
       {clientId: this.aluno, height:this.altura, weight:this.peso, profissionalId:usuarioLogadoObj.user_id, result: resultado}
-      ).subscribe((res) => this.route.navigate(['/professional']))
+      ).subscribe(
+        (res) => this.route.navigate(['/professional']),
+        (err) => this.mensagemErro = true
+        )
   }
 }

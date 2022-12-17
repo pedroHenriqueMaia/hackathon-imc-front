@@ -8,8 +8,15 @@
   <!-- <div *ngIf="botaoSelecionado">
     <app-table [colunas]="colunasAlunos" [dataTable]="dataTableAlunos"></app-table>
   </div> -->
-  <div *ngIf="botaoSelecionado">
-    <app-table [colunas]="colunasImc" [dataTable]="dataTableImc"></app-table>
-    <a class="btn mr-5" href="professional/cadastro">Cadastrar</a>
+  <div *ngIf="dataTableImc.length == 0">
+    <div class="alert alert-secondary" role="alert">
+      Nenhuma informação encontrada!
+    </div>
+  </div>
+  <div *ngIf="dataTableImc.length != 0">
+    <div *ngIf="botaoSelecionado">
+      <app-table [colunas]="colunasImc" [dataTable]="dataTableImc"></app-table>
+      <a class="btn mr-5" href="professional/cadastro">Cadastrar</a>
+    </div>
   </div>
 </div>

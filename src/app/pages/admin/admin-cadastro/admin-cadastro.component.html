@@ -2,6 +2,9 @@
 <div class="painel">
   <form class="container-fluid">
     <h2 align="center" class="mb-5 mt-5">Cadastrar</h2>
+    <div align="center" *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+      Problema ao salvar o formulario!
+    </div>
     <div class="form-group">
       <input [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Nome">
     </div>
@@ -19,6 +22,6 @@
     <div class="form-group">
       <input [(ngModel)]="senha" [ngModelOptions]="{standalone: true}" type="password" class="form-control" placeholder="Senha">
     </div>
-    <button (click)="cadastrar()" class="btn">Submit</button>
+    <button (click)="cadastrar()" class="btn">Salvar</button>
   </form>
 </div>

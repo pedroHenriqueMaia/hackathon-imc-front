@@ -11,8 +11,7 @@
 
     <div class="form-group">
       <select [(ngModel)]="aluno" [ngModelOptions]="{standalone: true}" class="form-control">
-        <option value="1">Luiz Henrique</option>
-        <option value="2">Afonso Gustavo</option>
+        <option *ngFor="let cliente of alunos" value='{{cliente.id}}'>{{ cliente.name }}</option>
       </select>
     </div>
     

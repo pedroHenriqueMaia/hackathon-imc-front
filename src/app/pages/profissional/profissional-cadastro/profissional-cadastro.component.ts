@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUsuario } from 'src/app/requests/models/usuario';
+import { UsersService } from 'src/app/requests/services/usuario.service';
 import { MOCK_ADMIN } from 'src/app/utils/mocks';
 
 @Component({
@@ -9,18 +11,33 @@ import { MOCK_ADMIN } from 'src/app/utils/mocks';
 export class ProfissionalCadastroComponent implements OnInit {
   
   user!: string;
-  peso!:string; 
-  altura!:string; 
-  aluno:string = 'profissional';
+  peso!:number; 
+  altura!:number; 
+  aluno!:number;
   senha!:string;
 
+  constructor(private usersService: UsersService) {}
+
+  alunos: IUsuario[] = [];
+
   ngOnInit(): void {
+    this.usersService.executarReqParaListarTodosOsUsuarios().subscribe((res) => {
+      res.data.map((i: IUsuario) => {
+        if(i.type == 'client' || i.type == 'CLIENT') {
+          this.alunos.push(i);
+        }
+      })
+    })
     this.user = MOCK_ADMIN.name;
   }
 
   cadastrar(): void {
-    console.log(this.peso)
-    console.log(this.altura)
-    console.log(this.aluno)
+    let usuarioLogadoObj;
+    const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    if(usuarioLogadoStr){
+      usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
+    }
+    let resultado = this.peso / (this.altura * this.altura)
+    this.usersService.executarReqParaCriarUmNovoIMC({clientId: this.aluno, height:this.altura, weight:this.peso, profissionalId:usuarioLogadoObj.user_id, result: resultado}).subscribe((res) => console.log(res))
   }
 }

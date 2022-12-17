@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { EstadoDadosService } from "src/app/utils/estadoDados.service";
 import { ENDPOINTS } from "../endpoints";
 import { IHttpResponse } from "../models/httpResponse";
+import { IIMC } from "../models/imc";
 import { IUsuario } from "../models/usuario";
 
 @Injectable({
@@ -73,6 +74,16 @@ export class UsersService {
     console.log(this.httpOptions )
     return this.http.get<IHttpResponse>(
       `${ENDPOINTS.IMC}?profissionalId=${usuarioLogadoObj.user_id}`,
+      this.httpOptions
+    ) as Observable<IHttpResponse>;
+  }
+
+    executarReqParaCriarUmNovoIMC(entrada: IIMC) {
+    this.setarHttpOption()
+    console.log(this.httpOptions )
+    return this.http.post<IHttpResponse>(
+      ENDPOINTS.IMC,
+      entrada,
       this.httpOptions
     ) as Observable<IHttpResponse>;
   }

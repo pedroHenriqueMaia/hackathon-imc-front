@@ -4,12 +4,12 @@ export interface IIMC_PROFESSIONAL {
 }
 export interface IIMC { 
   clientId: number
-  clientName: string;
-  createdAt:string;
+  clientName?: string;
+  createdAt?:string;
   height:number;
-  id:number;
+  id?:number;
   profissionalId:number;
-  profissionalName: string;
+  profissionalName?: string;
   result: number;
   weight: number;
   type?: string

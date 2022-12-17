@@ -13,6 +13,7 @@ import { ProfissionalCadastroComponent } from './pages/profissional/profissional
 import { LoginComponent } from './pages/login/login.component';
 import { AdminGuard } from './guards/admin.guard';
 import { ProfessionalGuard } from './guards/professional.guard';
+import { EstadoDadosService } from './utils/estadoDados.service';
 
 
 @NgModule({

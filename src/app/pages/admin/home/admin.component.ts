@@ -34,7 +34,7 @@ export class AdminComponent implements OnInit {
   alunosFiltrados: IUsuario[] = [];
 
   ngOnInit(): void {
-    this.usersService.executar().subscribe((res) => this.filtrarUsuarios(res.data));
+    this.usersService.executarReqParaListarTodosOsUsuarios().subscribe((res) => this.filtrarUsuarios(res.data));
     this.listarTabelaProfissionais();
     this.user = MOCK_ADMIN.name;
   }

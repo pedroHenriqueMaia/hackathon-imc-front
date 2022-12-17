@@ -9,9 +9,15 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  @Input() user!: string;
+  user!: string | null;
 
   ngOnInit(): void {
+    this.user = localStorage.getItem("nameUsuarioLogado")
+    console.log(this.user)
+  }
+
+  sair() {
+    localStorage.clear();
   }
 
 }

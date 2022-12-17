@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { IHttpResponse } from 'src/app/requests/models/httpResponse';
 import { LoginService } from 'src/app/requests/services/login.service';
+import { UsersService } from 'src/app/requests/services/usuario.service';
 import { EstadoDadosService } from 'src/app/utils/estadoDados.service';
 
 @Component({
@@ -12,7 +13,12 @@ import { EstadoDadosService } from 'src/app/utils/estadoDados.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private estadoDadosService: EstadoDadosService, private route: Router) {}
+  constructor(
+    private loginService: LoginService, 
+    private estadoDadosService: EstadoDadosService, 
+    private route: Router,
+    private usersService: UsersService
+    ) {}
 
   cpf!: string;
   senha!: string;
@@ -21,8 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   fazerLogin():void {
-    this.loginService.executar({login: '12345678900', password: 'admin'}).subscribe((res: IHttpResponse) => {
-      this.estadoDadosService.estadosDados.token = res.data.token;
+    this.loginService.executar({login: this.cpf, password: this.senha}).subscribe((res: IHttpResponse) => {
+      localStorage.setItem("token", res.data.token);
+      this.estadoDadosService.estadosDados.token = res.data.token
       this.decodificarJWT(res);
       this.redirecionarUsuario()
     })
@@ -30,13 +37,19 @@ export class LoginComponent implements OnInit {
 
   decodificarJWT(res: IHttpResponse) {
     const teste:any = jwtDecode(res.data.token)
-    this.estadoDadosService.estadosDados.usuarioLogado.id = teste.data.user_id
-    this.estadoDadosService.estadosDados.usuarioLogado.tipo = teste.data.type
+    localStorage.setItem("usuarioLogado", JSON.stringify(teste.data))
   }
 
   redirecionarUsuario() {
-    switch(this.estadoDadosService.estadosDados.usuarioLogado.tipo) {
+    let usuarioLogadoObj;
+    const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    if(usuarioLogadoStr){
+      usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
+    }
+
+    switch(usuarioLogadoObj.type) {
       case "admin": this.route.navigate(['/administrador']);
+      // this.fazerReqDasInfosUsuarioLogado(usuarioLogadoObj.user_id)
       break;
       case "professional": this.route.navigate(['/professional']);
       break;
@@ -45,5 +58,9 @@ export class LoginComponent implements OnInit {
       default: this.route.navigate(['/login']);
     }
   }
+
+  // fazerReqDasInfosUsuarioLogado(id: number){
+  //   this.usersService.executarReqParaListarUsuarioPorId(id).subscribe((res) => console.log(res.data))
+  // }
 
 }

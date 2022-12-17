@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/requests/services/usuario.service';
 import { MOCK_ADMIN } from 'src/app/utils/mocks';
 
 @Component({
@@ -8,10 +9,12 @@ import { MOCK_ADMIN } from 'src/app/utils/mocks';
 })
 export class AdminCadastroComponent implements OnInit {
 
+  constructor(private usersService: UsersService) {}
+  
   user!: string;
   nome!:string; 
   cpf!:string; 
-  tipo: "profissional" | "aluno" = 'profissional';
+  tipo: "professional" | "client" = 'professional';
   senha!:string;
 
   ngOnInit(): void {
@@ -19,9 +22,6 @@ export class AdminCadastroComponent implements OnInit {
   }
 
   cadastrar(): void {
-    console.log(this.nome)
-    console.log(this.cpf)
-    console.log(this.tipo)
-    console.log(this.senha)
+    this.usersService.executarReqCadastrarUmNovoUsuario({cpf: this.cpf, name:this.nome, type: this.tipo, password: this.senha}).subscribe((res) => console.log(res.data))
   }
 }

@@ -1,4 +1,4 @@
-<app-navbar [user]="user"></app-navbar>
+<app-navbar></app-navbar>
 <div class="painel">
   <form class="container-fluid">
     <h2 align="center" class="mb-5 mt-5">Cadastrar</h2>
@@ -11,8 +11,8 @@
 
     <div class="form-group">
       <select [(ngModel)]="tipo" [ngModelOptions]="{standalone: true}" class="form-control">
-        <option value="profissional">Profissional</option>
-        <option value="aluno">Aluno</option>
+        <option value="professional">Profissional</option>
+        <option value="client">Aluno</option>
       </select>
     </div>
 

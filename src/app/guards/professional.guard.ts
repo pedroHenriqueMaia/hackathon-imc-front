@@ -9,7 +9,12 @@ export class ProfessionalGuard implements CanActivate {
   constructor(private estadoDadosService:EstadoDadosService){}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if(this.estadoDadosService.dados.usuarioLogado.tipo == 'professional'){
+    let usuarioLogadoObj;
+    const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    if(usuarioLogadoStr){
+      usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
+    }
+    if(usuarioLogadoObj.type == 'professional'){
       return true;
     }
     return false;

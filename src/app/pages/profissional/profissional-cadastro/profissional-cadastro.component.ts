@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/requests/models/usuario';
 import { UsersService } from 'src/app/requests/services/usuario.service';
 import { MOCK_ADMIN } from 'src/app/utils/mocks';
@@ -16,7 +17,7 @@ export class ProfissionalCadastroComponent implements OnInit {
   aluno!:number;
   senha!:string;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private route: Router) {}
 
   alunos: IUsuario[] = [];
 
@@ -38,6 +39,8 @@ export class ProfissionalCadastroComponent implements OnInit {
       usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
     }
     let resultado = this.peso / (this.altura * this.altura)
-    this.usersService.executarReqParaCriarUmNovoIMC({clientId: this.aluno, height:this.altura, weight:this.peso, profissionalId:usuarioLogadoObj.user_id, result: resultado}).subscribe((res) => console.log(res))
+    this.usersService.executarReqParaCriarUmNovoIMC(
+      {clientId: this.aluno, height:this.altura, weight:this.peso, profissionalId:usuarioLogadoObj.user_id, result: resultado}
+      ).subscribe((res) => this.route.navigate(['/professional']))
   }
 }

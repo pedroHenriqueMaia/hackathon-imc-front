@@ -9,7 +9,7 @@
       <input [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Nome">
     </div>
     <div class="form-group">
-      <input [(ngModel)]="cpf" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="CPF">
+      <input [(ngModel)]="cpf" [ngModelOptions]="{standalone: true}" maxlength="14" (keypress)="cpfMask($event)" type="text" class="form-control" placeholder="CPF">
     </div>
 
     <div class="form-group">

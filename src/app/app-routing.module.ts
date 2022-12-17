@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
+import { AlunoGuard } from './guards/aluno.guard';
 import { ProfessionalGuard } from './guards/professional.guard';
 import { AdminCadastroComponent } from './pages/admin/admin-cadastro/admin-cadastro.component';
 import { AdminComponent } from './pages/admin/home/admin.component';
+import { AlunoComponent } from './pages/aluno/aluno.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfissionalComponent } from './pages/profissional/home/profissional.component';
 import { ProfissionalCadastroComponent } from './pages/profissional/profissional-cadastro/profissional-cadastro.component';
@@ -28,6 +30,11 @@ const routes: Routes = [
     path: 'professional/cadastro',
     component: ProfissionalCadastroComponent,
     canActivate: [ProfessionalGuard]
+  },
+  {
+    path: 'aluno',
+    component: AlunoComponent,
+    canActivate: [AlunoGuard]
   },
   {
     path: 'login',

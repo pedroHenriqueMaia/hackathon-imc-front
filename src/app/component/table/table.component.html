@@ -6,6 +6,13 @@
   </thead>
   <tbody *ngFor="let data of dataTable">
     <tr *ngIf="data.type == 'client'">
+      <td scope="row">{{ data.profissionalName }}</td>
+      <td>{{ data.height }}</td>
+      <td>{{ data.weight }}</td>
+      <td>{{ data.result }}</td>
+      <td>{{ data.createdAt }}</td>
+    </tr>
+    <tr *ngIf="data.type === 'professional'">
       <td scope="row">{{ data.id }}</td>
       <td>{{ data.name }}</td>
       <td>{{ data.cpf }}</td>

@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
 
     switch(usuarioLogadoObj.type) {
       case "admin": this.route.navigate(['/administrador']);
-      // this.fazerReqDasInfosUsuarioLogado(usuarioLogadoObj.user_id)
       break;
       case "professional": this.route.navigate(['/professional']);
       break;

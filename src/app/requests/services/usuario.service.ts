@@ -77,6 +77,23 @@ export class UsersService {
       this.httpOptions
     ) as Observable<IHttpResponse>;
   }
+  executarReqParaListarALunosDoAlunoLogado(data1?: string, data2?:string) {
+    this.setarHttpOption()
+    let usuarioLogadoObj;
+    const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    if(usuarioLogadoStr){
+      usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
+    }
+    let rota = `${ENDPOINTS.IMC}?clientId=${usuarioLogadoObj.user_id}`;
+
+    if(data1 && data2){
+      rota = `${ENDPOINTS.IMC}?clientId=${usuarioLogadoObj.user_id}&initialDate=${data1}&finalDate=${data2}`;
+    }
+    return this.http.get<IHttpResponse>(
+      rota,
+      this.httpOptions
+    ) as Observable<IHttpResponse>;
+  }
 
     executarReqParaCriarUmNovoIMC(entrada: IIMC) {
     this.setarHttpOption()

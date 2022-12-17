@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="btn-group mb-4">
+    <input [(ngModel)]="data1" [ngModelOptions]="{standalone: true}" type="date" class="form-control mr-3" >
+    <input [(ngModel)]="data2" [ngModelOptions]="{standalone: true}" type="date" class="form-control" >
+  </div>
+  <div *ngIf="dataTable.length == 0">
+    <div class="alert alert-secondary" role="alert">
+      Nenhuma informação encontrada!
+    </div>
+  </div>
+  <div *ngIf="dataTable.length != 0">
+    <app-table [colunas]="colunas" [dataTable]="dataTable"></app-table>
+  </div>
+  <a class="btn mr-5" (click)="pesquisar()">Pesquisar</a>
+</div>

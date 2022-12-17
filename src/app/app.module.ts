@@ -15,6 +15,8 @@ import { AdminGuard } from './guards/admin.guard';
 import { ProfessionalGuard } from './guards/professional.guard';
 import { EstadoDadosService } from './utils/estadoDados.service';
 import { CommonModule } from '@angular/common';
+import { AlunoComponent } from './pages/aluno/aluno.component';
+import { AlunoGuard } from './guards/aluno.guard';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { CommonModule } from '@angular/common';
     AdminCadastroComponent,
     ProfissionalComponent,
     ProfissionalCadastroComponent,
-    LoginComponent
+    LoginComponent,
+    AlunoComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     CommonModule
   ],
-  providers: [AdminGuard, ProfessionalGuard],
+  providers: [AdminGuard, ProfessionalGuard, AlunoGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdminGuard } from './guards/admin.guard';
 import { ProfessionalGuard } from './guards/professional.guard';
 import { EstadoDadosService } from './utils/estadoDados.service';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { EstadoDadosService } from './utils/estadoDados.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [AdminGuard, ProfessionalGuard],
   bootstrap: [AppComponent]

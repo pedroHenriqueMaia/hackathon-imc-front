@@ -14,18 +14,18 @@ export class UsersService {
   constructor(private http: HttpClient, private estadoDadosService: EstadoDadosService) {}
 
   setarHttpOption() {
-    let usuarioLogadoObj;
-    const usuarioLogadoStr = localStorage.getItem("token");
-    if(usuarioLogadoStr){
-      usuarioLogadoObj = usuarioLogadoStr
+    let usuarioLogadoObj2;
+    const usuarioLogadoStr2 = localStorage.getItem("token");
+    if(usuarioLogadoStr2){
+      usuarioLogadoObj2 = usuarioLogadoStr2
     }
-    if(usuarioLogadoObj){
+    if(usuarioLogadoObj2){
       this.httpOptions =  {
         headers: {
           "Content-type": "application/json",
           "Content-Security-Policy": "self",
           Authorization:
-          `Bearer ${usuarioLogadoObj}`,
+          `Bearer ${usuarioLogadoObj2}`,
         },
       };
     }else{
@@ -59,6 +59,20 @@ export class UsersService {
     return this.http.post<IHttpResponse>(
       ENDPOINTS.USERS,
       entrada,
+      this.httpOptions
+    ) as Observable<IHttpResponse>;
+  }
+
+    executarReqParaListarALunosDoProfessionalLogado() {
+    this.setarHttpOption()
+    let usuarioLogadoObj;
+    const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    if(usuarioLogadoStr){
+      usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
+    }
+    console.log(this.httpOptions )
+    return this.http.get<IHttpResponse>(
+      `${ENDPOINTS.IMC}?profissionalId=${usuarioLogadoObj.user_id}`,
       this.httpOptions
     ) as Observable<IHttpResponse>;
   }

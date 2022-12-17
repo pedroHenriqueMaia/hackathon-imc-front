@@ -1,15 +1,15 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
   <div class="btn-group mb-4">
-    <button type="button" (click)="listarTabelaProfissionais()" [ngClass]="botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">Alunos</button>
-    <button type="button" (click)="listarTabelaAlunos()" [ngClass]="!botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">IMCs</button>
+    <!-- <button type="button" (click)="listarTabelaProfissionais()" [ngClass]="botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">Alunos</button> -->
+    <button type="button" [ngClass]="!botaoSelecionado ? 'botao-selecionado' : 'botao-padrao'" class="btn">IMCs</button>
   </div>
 
-  <div *ngIf="botaoSelecionado">
+  <!-- <div *ngIf="botaoSelecionado">
     <app-table [colunas]="colunasAlunos" [dataTable]="dataTableAlunos"></app-table>
-  </div>
-  <div *ngIf="!botaoSelecionado">
+  </div> -->
+  <div *ngIf="botaoSelecionado">
     <app-table [colunas]="colunasImc" [dataTable]="dataTableImc"></app-table>
-    <a class="btn mr-5" href="profissional/cadastro">Cadastrar</a>
+    <a class="btn mr-5" href="professional/cadastro">Cadastrar</a>
   </div>
 </div>

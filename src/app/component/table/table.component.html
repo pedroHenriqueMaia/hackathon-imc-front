@@ -10,22 +10,17 @@
       <td>{{ data.name }}</td>
       <td>{{ data.cpf }}</td>
     </tr>
-    <tr *ngIf="data.type === 'professional'">
-      <td scope="row">{{ data.id }}</td>
-      <td>{{ data.name }}</td>
-      <td>{{ data.cpf }}</td>
-    </tr>
     <tr *ngIf="data.type === 'admin'">
     <td scope="row">{{ data.nome }}</td>
     <td>{{ data.cpf }}</td>
       <td>{{ data.alunos }}</td>
     </tr>
-    <tr *ngIf="data.type === 'IMC'">
-      <td scope="row">{{ data.aluno }}</td>
-      <td>{{ data.altura }}</td>
-      <td>{{ data.peso }}</td>
-      <td>{{ data.resultado }}</td>
-      <td>{{ data.data }}</td>
+    <tr *ngIf="data.type === 'imc'">
+      <td scope="row">{{ data.clientName }}</td>
+      <td>{{ data.height }}</td>
+      <td>{{ data.weight }}</td>
+      <td>{{ data.result }}</td>
+      <td>{{ data.createdAt }}</td>
     </tr>
   </tbody>
 </table>

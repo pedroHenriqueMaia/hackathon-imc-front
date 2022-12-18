@@ -16,3 +16,9 @@
   background-color: #65819C;
   color: white;
 }
+
+@media screen and (max-width: 420px) {
+  .container-fluid{
+    width: 105% !important;
+  }
+}

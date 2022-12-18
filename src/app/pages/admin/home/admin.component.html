@@ -10,6 +10,7 @@
       <div class="alert alert-secondary" role="alert">
         Nenhuma informação encontrada!
       </div>
+      <a class="btn mr-5" href="administradorcadastro">Cadastrar</a>
     </div>
     <div *ngIf="dataTableProfissionais.length != 0">
       <app-table [colunas]="colunasProfissionais" [dataTable]="dataTableProfissionais"></app-table>
@@ -21,6 +22,7 @@
       <div class="alert alert-secondary" role="alert">
         Nenhuma informação encontrada!
       </div>
+      <a class="btn mr-5" (click)="redirecionar()">Cadastrar</a>
     </div>
     <div *ngIf="dataTableAlunos.length != 0">
       <app-table [colunas]="colunasAlunos" [dataTable]="dataTableAlunos"></app-table>

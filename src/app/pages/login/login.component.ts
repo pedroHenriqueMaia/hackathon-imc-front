@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { IHttpResponse } from 'src/app/requests/models/httpResponse';
 import { LoginService } from 'src/app/requests/services/login.service';
-import { UsersService } from 'src/app/requests/services/usuario.service';
 import { EstadoDadosService } from 'src/app/utils/estadoDados.service';
 
 @Component({
@@ -16,8 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService, 
     private estadoDadosService: EstadoDadosService, 
-    private route: Router,
-    private usersService: UsersService
+    private route: Router
     ) {}
 
   cpf!: string;
@@ -28,13 +26,18 @@ export class LoginComponent implements OnInit {
   }
 
   fazerLogin():void {
-    this.loginService.executar({login: this.cpf, password: this.senha}).subscribe((res: IHttpResponse) => {
+    const cpf = this.desformatarCpf()
+    this.loginService.executar({login: cpf, password: this.senha}).subscribe((res: IHttpResponse) => {
       localStorage.setItem("token", res.data.token);
       this.estadoDadosService.estadosDados.token = res.data.token
       this.decodificarJWT(res);
       this.redirecionarUsuario()
     },
     (err) => this.mostrarMensagemErro = true) 
+  }
+
+  desformatarCpf() {
+    return this.cpf.replace('.', '').replace('.', '').replace('-', '')
   }
 
   decodificarJWT(res: IHttpResponse) {
@@ -59,10 +62,6 @@ export class LoginComponent implements OnInit {
       default: this.route.navigate(['/login']);
     }
   }
-
-  // fazerReqDasInfosUsuarioLogado(id: number){
-  //   this.usersService.executarReqParaListarUsuarioPorId(id).subscribe((res) => console.log(res.data))
-  // }
 
   cpfMask(value:any) {
     this.cpf = value.target.value

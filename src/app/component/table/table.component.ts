@@ -5,15 +5,12 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
 
   constructor() { }
 
   @Input() dataTable!: any;
   @Input() colunas!: string[];
 
-  ngOnInit(): void {
-  console.log(this.dataTable)
-  }
 
 }

@@ -50,7 +50,7 @@ export class UsersService {
     executarReqParaListarUsuarioPorId(id: number) {
     this.setarHttpOption()
     return this.http.get<IHttpResponse>(
-      `${ENDPOINTS.USERS}/${id}`,
+      `${ENDPOINTS.USER}/${id}`,
       this.httpOptions
     ) as Observable<IHttpResponse>;
   }

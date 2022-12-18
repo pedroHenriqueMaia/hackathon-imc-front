@@ -17,7 +17,7 @@ export class AlunoGuard implements CanActivate {
     if(usuarioLogadoObj?.type == 'client'){
       return true;
     }
-    this.router.navigate(['/'])
+    this.router.navigate([''])
     return false;
   }
 

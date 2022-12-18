@@ -10,11 +10,11 @@
       <div class="alert alert-secondary" role="alert">
         Nenhuma informação encontrada!
       </div>
-      <a class="btn mr-5" href="professional/cadastro">Cadastrar IMC</a>
+      <a class="btn mr-5" href="professionalcadastro">Cadastrar IMC</a>
     </div>
     <div *ngIf="dataTableAlunos.length != 0">
       <app-table [colunas]="colunasAlunos" [dataTable]="dataTableAlunos"></app-table>
-      <a class="btn mr-5" href="professional/cadastro">Cadastrar IMC</a>
+      <a class="btn mr-5" href="professionalcadastro">Cadastrar IMC</a>
     </div>
   </div>
   <div *ngIf="!botaoSelecionado">
@@ -22,11 +22,11 @@
       <div class="alert alert-secondary" role="alert">
         Nenhuma informação encontrada!
       </div>
-      <a class="btn mr-5" href="professional/cadastro">Cadastrar</a>
+      <a class="btn mr-5" href="professionalcadastro">Cadastrar</a>
     </div>
     <div *ngIf="dataTableImc.length != 0">
       <app-table [colunas]="colunasImc" [dataTable]="dataTableImc"></app-table>
-      <a class="btn mr-5" href="professional/cadastro">Cadastrar</a>
+      <a class="btn mr-5" href="professionalcadastro">Cadastrar</a>
     </div>
   </div>
 </div>

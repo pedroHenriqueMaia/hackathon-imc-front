@@ -18,7 +18,7 @@ const routes: Routes = [
     canActivate: [AdminGuard]
   },
   {
-    path: 'administrador/cadastro',
+    path: 'administradorcadastro',
     component: AdminCadastroComponent,
     canActivate: [AdminGuard]
   },
@@ -28,7 +28,7 @@ const routes: Routes = [
     canActivate: [ProfessionalGuard]
   },
   {
-    path: 'professional/cadastro',
+    path: 'professionalcadastro',
     component: ProfissionalCadastroComponent,
     canActivate: [ProfessionalGuard]
   },

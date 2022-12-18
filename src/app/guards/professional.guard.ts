@@ -17,7 +17,7 @@ export class ProfessionalGuard implements CanActivate {
     if(usuarioLogadoObj?.type == 'professional'){
       return true;
     }
-    this.router.navigate(['/'])
+    this.router.navigate([''])
     return false;
   }
 

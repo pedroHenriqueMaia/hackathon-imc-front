@@ -1,7 +1,7 @@
 export const ENDPOINTS = {
-  LOGIN: 'http://ec2-54-94-115-90.sa-east-1.compute.amazonaws.com/v1/login',
-  USERS: 'http://ec2-54-94-115-90.sa-east-1.compute.amazonaws.com/v1/users',
-  USER: 'http://ec2-54-94-115-90.sa-east-1.compute.amazonaws.com/v1/user',
-  IMC: 'http://ec2-54-94-115-90.sa-east-1.compute.amazonaws.com/v1/imc',
-  IMC_ALUNOS: 'http://ec2-54-94-115-90.sa-east-1.compute.amazonaws.com/v1/imc/report/profissional/',
+  LOGIN: 'https://kpj3vt8zf2.execute-api.sa-east-1.amazonaws.com/production/v1/login',
+  USERS: 'https://kpj3vt8zf2.execute-api.sa-east-1.amazonaws.com/production/v1/users',
+  USER: 'https://kpj3vt8zf2.execute-api.sa-east-1.amazonaws.com/production/v1/user',
+  IMC: 'https://kpj3vt8zf2.execute-api.sa-east-1.amazonaws.com/production/v1/imc',
+  IMC_ALUNOS: 'https://kpj3vt8zf2.execute-api.sa-east-1.amazonaws.com/production/v1/imc/report/profissional/',
 }

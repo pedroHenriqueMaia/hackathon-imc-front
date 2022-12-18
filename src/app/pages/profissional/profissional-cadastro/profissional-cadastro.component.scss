@@ -6,11 +6,13 @@
   margin-top: 10%;
   border-radius: 30px;
   padding: 1rem;
-    button {
-      margin-right: 25%;
-      margin-left: 25%;
-      width: 50%;
-      background-color: #8DA9C4;
-      color: white;
-    }   
+  button, a {
+    margin-right: 25%;
+    width: 100%;
+    background-color: #8DA9C4;
+    color: white;
+  }
+  a{
+    background-color: #0b2545;
+  }
 }

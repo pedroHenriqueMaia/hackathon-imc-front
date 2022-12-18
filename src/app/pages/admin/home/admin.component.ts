@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/requests/models/usuario';
 import { UsersService } from 'src/app/requests/services/usuario.service';
 import { MOCK_ADMIN } from 'src/app/utils/mocks';
@@ -11,7 +12,7 @@ import { UtilsService } from 'src/app/utils/utils';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
 
  colunasProfissionais: string[] = [
   'ID',
@@ -64,6 +65,10 @@ export class AdminComponent implements OnInit {
     this.dataTableAlunos = [];
     this.dataTableAlunos = this.alunosFiltrados;
     this.botaoSelecionado = false;
+  }
+
+  redirecionar() {
+    this.router.navigate(['administradorcadastro'])
   }
 
 

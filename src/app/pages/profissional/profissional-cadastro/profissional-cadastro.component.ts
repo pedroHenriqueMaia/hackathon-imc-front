@@ -13,7 +13,7 @@ export class ProfissionalCadastroComponent implements OnInit {
   
   user!: string;
   peso!:number; 
-  altura!:number; 
+  altura!:any; 
   aluno!:number;
   senha!:string;
   mensagemErro: boolean = false;
@@ -40,12 +40,27 @@ export class ProfissionalCadastroComponent implements OnInit {
     if(usuarioLogadoStr){
       usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
     }
-    let resultado = this.peso / (this.altura * this.altura)
+    const altura = parseFloat(this.altura.replace(',','.'));
+    let resultado = this.peso / (altura * altura)
     this.usersService.executarReqParaCriarUmNovoIMC(
-      {clientId: this.aluno, height:this.altura, weight:this.peso, profissionalId:usuarioLogadoObj.user_id, result: resultado}
+      {clientId: this.aluno, height: altura, weight:this.peso, profissionalId:usuarioLogadoObj.user_id, result: +resultado.toFixed(2)}
       ).subscribe(
         (res) => this.route.navigate(['/professional']),
         (err) => this.mensagemErro = true
         )
+  }
+
+  maskHeight(height: any): void {
+    let numberList = height.target.value.replace(',','').split('');
+
+    let concat = numberList[0] || ''
+
+    if(numberList[1]){
+      concat += ',' + numberList[1]
+    }
+    if(numberList[2]){
+      concat += numberList[2];
+    }
+    this.altura = concat; 
   }
 }

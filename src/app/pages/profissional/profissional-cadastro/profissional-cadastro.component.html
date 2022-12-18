@@ -6,10 +6,10 @@
       Problema ao salvar o formulario!
     </div>
     <div class="form-group">
-      <input [(ngModel)]="peso" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Peso">
+      <input [(ngModel)]="peso" [ngModelOptions]="{standalone: true}" type="number" maxlength="3" class="form-control" placeholder="Informe o peso em kg. Ex: 80">
     </div>
     <div class="form-group">
-      <input [(ngModel)]="altura" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Altura">
+      <input [(ngModel)]="altura" [ngModelOptions]="{standalone: true}" type="text" class="form-control" (keyup)="maskHeight($event)" placeholder="Informe a altura em metros. Ex: 1,7 ">
     </div>
 
     <div class="form-group">

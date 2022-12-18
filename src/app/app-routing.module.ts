@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GraficoComponent } from './grafico/grafico.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AlunoGuard } from './guards/aluno.guard';
 import { ProfessionalGuard } from './guards/professional.guard';
@@ -35,6 +36,10 @@ const routes: Routes = [
     path: 'aluno',
     component: AlunoComponent,
     canActivate: [AlunoGuard]
+  },
+  {
+    path: 'grafico',
+    component: GraficoComponent
   },
   {
     path: '',

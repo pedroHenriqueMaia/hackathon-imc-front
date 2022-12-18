@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IUsuario } from 'src/app/requests/models/usuario';
+import { UsersService } from 'src/app/requests/services/usuario.service';
+import { TableService } from './table.service';
+
 
 @Component({
   selector: 'app-table',
@@ -7,10 +12,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableComponent {
 
-  constructor() { }
+  constructor(private tableService: TableService) { }
 
   @Input() dataTable!: any;
   @Input() colunas!: string[];
 
+  redirecionarGrafico(cpf: any){
+    this.tableService.redirecionarGrafico(cpf)
+  }
 
 }

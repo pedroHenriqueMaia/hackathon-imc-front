@@ -24,7 +24,8 @@ export class ProfissionalComponent implements OnInit {
    colunasAlunos: string[] = [
     'Nome',
     'CPF',
-    'Qtd. IMCs'
+    'Qtd. IMCs',
+    ''
    ]
   
     user!: string;

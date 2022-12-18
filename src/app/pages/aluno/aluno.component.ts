@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TableService } from 'src/app/component/table/table.service';
 import { IIMC } from 'src/app/requests/models/imc';
 import { UsersService } from 'src/app/requests/services/usuario.service';
 
@@ -9,7 +10,7 @@ import { UsersService } from 'src/app/requests/services/usuario.service';
 })
 export class AlunoComponent implements OnInit {
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private tableService: TableService) { }
   colunas: string[] = [
     'Profissional',
     'Altura',
@@ -33,6 +34,15 @@ export class AlunoComponent implements OnInit {
       this.dataTable = res.data
       this.dataTable.map((i) => i.type = 'aluno')
     })
+  }
+
+  redirecionarGraficoComID(){
+    let usuarioLogadoObj;
+    const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    if(usuarioLogadoStr){
+      usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
+    }
+    this.tableService.redirecionarGraficoComID(usuarioLogadoObj.user_id)
   }
 
 }

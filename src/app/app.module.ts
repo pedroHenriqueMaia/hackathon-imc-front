@@ -17,6 +17,8 @@ import { EstadoDadosService } from './utils/estadoDados.service';
 import { CommonModule } from '@angular/common';
 import { AlunoComponent } from './pages/aluno/aluno.component';
 import { AlunoGuard } from './guards/aluno.guard';
+import { GraficoComponent } from './grafico/grafico.component';
+import { TableService } from './component/table/table.service';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { AlunoGuard } from './guards/aluno.guard';
     ProfissionalComponent,
     ProfissionalCadastroComponent,
     LoginComponent,
-    AlunoComponent
+    AlunoComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,

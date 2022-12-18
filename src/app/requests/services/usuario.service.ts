@@ -89,18 +89,25 @@ export class UsersService {
       this.httpOptions
     ) as Observable<IHttpResponse>;
   }
-  executarReqParaListarALunosDoAlunoLogado(data1?: string, data2?:string) {
+  executarReqParaListarALunosDoAlunoLogado(data1?: string, data2?:string, usuario?: number) {
     this.setarHttpOption()
     let usuarioLogadoObj;
     const usuarioLogadoStr = localStorage.getItem("usuarioLogado");
+    
     if(usuarioLogadoStr){
       usuarioLogadoObj = JSON.parse(usuarioLogadoStr)
     }
+
     let rota = `${ENDPOINTS.IMC}?clientId=${usuarioLogadoObj.user_id}`;
 
-    if(data1 && data2){
-      rota = `${ENDPOINTS.IMC}?clientId=${usuarioLogadoObj.user_id}&initialDate=${data1}&finalDate=${data2}`;
+    if(usuario){
+      rota = `${ENDPOINTS.IMC}?clientId=${usuario}`;
     }
+
+    if(data1 && data1.length > 0 && data2 && data2.length > 0){
+      rota += `&initialDate=${data1}&finalDate=${data2}`;
+    }
+    console.log(rota)
     return this.http.get<IHttpResponse>(
       rota,
       this.httpOptions

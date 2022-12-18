@@ -2,5 +2,10 @@ table {
   text-align: center;
   td {
     background-color: #F8F9FA;
+    button{
+      border-radius: 10%;
+      background-color: #FFFF;
+      border: solid 2px #8DA9C4;
+    }
   }
 }

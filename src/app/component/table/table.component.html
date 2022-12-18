@@ -21,6 +21,7 @@
       <td scope="row">{{ data.nome }}</td>
       <td>{{ data.cpf }}</td>
       <td>{{ data.qtd }}</td>
+      <td (click)="redirecionarGrafico(data.cpf)"><button class="btn"><img src="../../../assets/trend.png"></button></td>
     </tr>
     <tr *ngIf="data.type === 'professional'">
       <td scope="row">{{ data.id }}</td>
